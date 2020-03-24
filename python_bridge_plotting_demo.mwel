@@ -1,0 +1,19 @@
+// If you change the names of the start/stop variables, you'll need to pass the
+// new names as arguments to Conduit.main
+var start = false
+var stop = false
+
+var rand_var = 0
+
+
+protocol 'Python Bridge Plotting Demo' {
+    trial (nsamples = 10) {
+        start = not start
+        list (nsamples = 10) {
+            rand_var = disc_rand(1, 10)
+            report ('rand_var = $rand_var')
+        }
+        stop = not stop
+        wait (1s)
+    }
+}
